@@ -5,11 +5,10 @@ from peft import PeftModel
 class InferlessPythonModel:
     def initialize(self):
         self.tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-v0.1")
-        base_model = AutoModelForCausalLM.from_pretrained("mistralai/Mistral-7B-v0.1").to("cuda")
-        self.model = PeftModel.from_pretrained(base_model,"CATIE-AQ/mistral7B-FR-InstructNLP-LoRA", adapter_name="french")
-        self.model.load_adapter("Liu-Xiang/mistral7bit-lora-sql", adapter_name="sql")
-        self.model.load_adapter("alignment-handbook/zephyr-7b-dpo-lora", adapter_name="dpo")
-        self.model.load_adapter("uukuguy/Mistral-7B-OpenOrca-lora", adapter_name="orca")
+        base_model = AutoModelForCausalLM.from_pretrained("unsloth/gemma-7b").to("cuda")
+        self.model = PeftModel.from_pretrained(base_model,"philschmid/gemma-7b-dolly-chatml", adapter_name="french")
+        self.model.load_adapter("ushuradmin/usrs_extractions_4b_adapter_only_v1", adapter_name="sql")
+        self.model.load_adapter("ushuradmin/usrs_classification_adapter_only", adapter_name="dpo")
 
     def infer(self, inputs):
         prompt = inputs["prompt"]
