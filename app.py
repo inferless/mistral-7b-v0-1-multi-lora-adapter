@@ -3,7 +3,7 @@ from transformers import AutoModelForCausalLM,AutoTokenizer
 class InferlessPythonModel:
     def initialize(self):
         self.tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-v0.1")
-        model = AutoModelForCausalLM.from_pretrained("mistralai/Mistral-7B-v0.1").to("cuda")
+        self.model = AutoModelForCausalLM.from_pretrained("mistralai/Mistral-7B-v0.1").to("cuda")
         self.model.load_adapter("CATIE-AQ/mistral7B-FR-InstructNLP-LoRA", adapter_name="french")
         self.model.load_adapter("Liu-Xiang/mistral7bit-lora-sql", adapter_name="sql")
         self.model.load_adapter("alignment-handbook/zephyr-7b-dpo-lora", adapter_name="dpo")
