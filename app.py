@@ -2,14 +2,14 @@ from transformers import AutoModelForCausalLM,AutoTokenizer
 from peft import PeftModel
 import os
 
-HF_TOKEN = os.environ.get("HF_TOKEN")
+# HF_TOKEN = os.environ.get("HF_TOKEN")
 
 class InferlessPythonModel:
     def initialize(self):
         self.tokenizer = AutoTokenizer.from_pretrained("unsloth/Meta-Llama-3.1-8B-Instruct")
         base_model = AutoModelForCausalLM.from_pretrained("unsloth/Meta-Llama-3.1-8B-Instruct").to("cuda")
-        self.model = PeftModel.from_pretrained(base_model,"ushuradmin/usrs-extractions-adapteronly-16_bit_llama3.1_v1", adapter_name="extract", token = HF_TOKEN)
-        self.model.load_adapter("ushuradmin/usrs-classification-adapteronly-16_bit_llama3.1_v1", adapter_name="classify", token = HF_TOKEN)
+        self.model = PeftModel.from_pretrained(base_model,"ushuradmin/usrs-extractions-adapteronly-16_bit_llama3.1_v1", adapter_name="extract")
+        self.model.load_adapter("ushuradmin/usrs-classification-adapteronly-16_bit_llama3.1_v1", adapter_name="classify")
 
     def infer(self, inputs):
         prompt = inputs["prompt"]
