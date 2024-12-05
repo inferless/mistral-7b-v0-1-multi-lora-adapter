@@ -9,7 +9,7 @@ INPUT_SCHEMA = {
         'datatype': 'STRING',
         'required': True,
         'shape': [1],
-        'example': ["dpo"]
+        'example': ["extract"]
     },
     "temperature": {
         'datatype': 'FP32',
