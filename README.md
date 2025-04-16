@@ -1,5 +1,5 @@
 # Deploy Mistral-7B-v0.1-multi-LoRA-adapter using Inferless
-The model template supports multiple LoRA (Low-Rank Adaptation) adapters, allowing you to perform a variety of natural language processing tasks with ease. Built on the Mistral-7B model and utilizing the transformers and PEFT libraries, this template enables dynamic switching between different adapters. It has 4 different LoRA adapters(`french`,`sql`,`dpo`,`orca`) which can be change with each inference request.
+This model template supports multiple LoRA (Low-Rank Adaptation) adapters, allowing you to perform a variety of natural language processing tasks with ease. Built on the Mistral-7B model and utilizing the transformers and PEFT libraries, this template enables dynamic switching between different adapters. It has 4 different LoRA adapters(`french`,`sql`,`dpo`,`orca`) which can be change with each inference request.
 
 ### Fork the Repository
 Get started by forking the repository. You can do this by clicking on the fork button in the top right corner of the repository page.
